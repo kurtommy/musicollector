@@ -1,0 +1,18 @@
+<md-sidenav-layout fullscreen>
+  <md-sidenav #leftSideNav [opened]="false">
+    Start Sidenav.
+    <button md-button (click)="leftSideNav.close()">Close</button>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="leftSideNav.open()">
+      <md-icon >menu</md-icon>
+    </button>
+
+    <button md-button >Musicollector</button>
+
+    <button md-fab >
+      <md-icon>add</md-icon>
+    </button>
+  </md-toolbar>
+</md-sidenav-layout>
