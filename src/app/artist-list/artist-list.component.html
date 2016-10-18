@@ -1,0 +1,11 @@
+<md-card class="artist-list-card">
+  <md-nav-list dense>
+    <a
+        md-list-item *ngFor="let artist of artists | async"
+        (click)="goToArtist(artist)">
+      <img md-list-avatar [src]="artist.images[artist.images.length - 1].url" alt="{{artist.name}}">
+      <h3 md-line> {{artist.name}} </h3>
+      <md-icon>chevron_right</md-icon>
+    </a>
+  </md-nav-list>
+</md-card>

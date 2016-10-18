@@ -1,0 +1,16 @@
+<md-card class="demo-card demo-basic">
+  <md-toolbar color="accent">Add Artist</md-toolbar>
+  <md-card-content>
+    <form (ngSubmit)="onSubmit()" #artistForm="ngForm">
+      <md-input
+          placeholder="Artist Name"
+          [(ngModel)]="artist.name"
+          name="artistName">
+      </md-input>
+
+      <br>
+      <button md-button routerLink="/">Cancel</button>
+      <button type="submit" md-raised-button color="accent">Save</button>
+    </form>
+  </md-card-content>
+</md-card>

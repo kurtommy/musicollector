@@ -6,13 +6,15 @@
 
   <md-toolbar color="primary">
     <button md-icon-button (click)="leftSideNav.open()">
-      <md-icon >menu</md-icon>
+      <md-icon>menu</md-icon>
     </button>
 
-    <button md-button >Musicollector</button>
+    <button md-button routerLink="/">Musicollector</button>
 
-    <button md-fab >
+    <button md-fab routerLink="/add-artist">
       <md-icon>add</md-icon>
     </button>
   </md-toolbar>
+
+  <router-outlet></router-outlet>
 </md-sidenav-layout>

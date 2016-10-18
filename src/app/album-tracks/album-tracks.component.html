@@ -1,0 +1,33 @@
+<md-card class="album-tracks-card">
+  <md-card-header>
+     <img md-card-avatar [src]="artistService.album?.images[artistService.album?.images?.length - 1]?.url">
+     <md-card-title>{{albumName}}</md-card-title>
+
+     <md-card-subtitle>
+       <a (click)="openMediaLink('spotify', 'album', artistService.album)">Spotify</a>
+       <!-- <a [href]="utilsService.getMediaLink('youtube', 'artist', spotifyArtist)" target="_blank">Youtube</a>
+       <a [href]="utilsService.getMediaLink('vevo', 'artist', spotifyArtist)" target="_blank">Vevo</a> -->
+     </md-card-subtitle>
+
+  </md-card-header>
+
+  <md-card-content>
+    <h2>Tracks</h2>
+    <md-list *ngIf="artistService.tracks">
+      <md-list-item *ngFor="let track of artistService.tracks.items">
+        <h3 md-line>{{track.name}}</h3>
+
+        <button md-icon-button [md-menu-trigger-for]="menu">
+           <md-icon>more_vert</md-icon>
+        </button>
+
+        <md-menu #menu="mdMenu" x-position="after">
+            <button md-menu-item (click)="openMediaLink('spotify', 'track', track)">
+              Spotify
+            </button>
+        </md-menu>
+
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>

@@ -1,0 +1,9 @@
+.artist-albums {
+  margin: 10px;
+
+}
+a {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}

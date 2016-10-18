@@ -1,0 +1,52 @@
+<md-card class="artist-albums">
+  <md-card-header *ngIf="artistService.artist?.images">
+     <img md-card-avatar [src]="artistService.artist.images[artistService.artist.images.length - 1].url">
+     <md-card-title>{{artistName}}</md-card-title>
+
+     <md-card-subtitle>
+       <a (click)="openMediaLink('spotify', 'artist', artistService.artist)">Spotify</a>
+       <!-- <a [href]="utilsService.getMediaLink('youtube', 'artist', spotifyArtist)" target="_blank">Youtube</a> -->
+       <!-- <a [href]="utilsService.getMediaLink('vevo', 'artist', spotifyArtist)" target="_blank">Vevo</a> -->
+     </md-card-subtitle>
+
+  </md-card-header>
+
+  <md-card-content>
+    <div class="">
+      <span *ngFor="let tag of artistService.artist.tags">
+         {{tag.name}} |
+      </span>
+    </div>
+    <h2>Albums</h2>
+    <md-list *ngIf="artistService.artist.albums?.length">
+      <md-list-item
+          *ngFor="let album of artistService.artist.albums ; let i = index">
+        <img md-list-avatar [src]="album.images[album.images.length - 1].url">
+        <h3 md-line>
+            <!-- <a [routerLink]="['/artist', artistId, artistName, album.id, album.name]">
+              {{album.name}}
+            </a> -->
+            <a (click)="goToAlbumTracks(album)">
+              {{album.name}}
+            </a>
+        </h3>
+
+        <button md-icon-button [md-menu-trigger-for]="menu">
+           <md-icon>more_vert</md-icon>
+        </button>
+
+        <md-menu #menu="mdMenu" x-position="after">
+            <button md-menu-item (click)="openMediaLink('spotify', 'album', album)">
+              Spotify
+            </button>
+        </md-menu>
+
+        <p md-line>
+          <span>Type: {{album.type}}</span>
+          <!-- <a [href]="utilsService.getMediaLink('youtube', 'album', album)" target="_blank">Youtube</a> -->
+          <!-- <a [href]="utilsService.getMediaLink('vevo', 'album', album)" target="_blank">Vevo</a> -->
+        </p>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
